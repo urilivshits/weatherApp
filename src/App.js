@@ -8,6 +8,7 @@ class App extends Component {
       latitude: 42.15,
       longitude: 24.75,
       locationFetched: false,
+      searchfield: "",
       weatherData: []
     }
   };
@@ -48,10 +49,27 @@ class App extends Component {
   }
     
   fetchNewLocation = () => {
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=London&APPID=c2f6d99c1021899a45402a69657c35aa`)
-    .then(response => response.json())
-    .then(fetchedData => this.setState({weatherData: fetchedData}));
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.searchfield}&APPID=c2f6d99c1021899a45402a69657c35aa`)
+    .then(response => response.ok ? response.json() : console.log("response not ok"))
+      // console.log(response.ok);
+      // if (response.ok) {
+    //     response.json()
+    //   // }
+    //   // else if (!response.ok) {
+    //   //   return;
+    //   // }
+    // )
+    // .then(response => response.json())
+    // .then(city => {
+    //   if (city.name.length === 0) {
+    //     return
+    //   }})
+    .then(fetchedData => fetchedData !== undefined ? this.setState({weatherData: fetchedData}) : console.log("city not found"));
     console.log("weather fetched");
+  }
+
+  onSearchChange = (event) => {
+    this.setState({searchfield: event.target.value});
   }
   // componentDidUpdate () {
   //   fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${this.state.latitude}&lon=${this.state.longitude}&APPID=c2f6d99c1021899a45402a69657c35aa`)
@@ -77,14 +95,14 @@ class App extends Component {
       console.log(this.state.longitude);
       console.log(this.state.weatherData);
       console.log("page rendered");
+      console.log(this.state.searchfield);
       
       return (
         <div className="App">
-            <button onClick={this.fetchNewLocation}>click</button>
             {/* <p>latitude: {this.state.latitude}</p>
             <p>longitude: {this.state.longitude}</p>
             <p>location: {this.state.weatherData.name}</p> */}
-            <General weather={this.state.weatherData}/>
+            <General weather={this.state.weatherData} searchChange={this.onSearchChange} searchSubmit={this.fetchNewLocation}/>
        </div>
       )
     }

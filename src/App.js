@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import General from "./General";
+import MoreDetails from "./MoreDetails";
 
 class App extends Component {
   constructor () {
@@ -9,7 +10,8 @@ class App extends Component {
       longitude: 24.75,
       locationFetched: false,
       searchfield: "",
-      weatherData: []
+      weatherData: [],
+      hourlyData: []
     }
   };
 
@@ -39,38 +41,38 @@ class App extends Component {
       console.log("coords not supported by the browser");
       return;
     }
-  }
+  };
   
   fetchWeather = () => {
-    fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${this.state.latitude}&lon=${this.state.longitude}&APPID=c2f6d99c1021899a45402a69657c35aa`)
-    .then(response => response.json())
-    .then(fetchedData => this.setState({weatherData: fetchedData}));
-    console.log("weather fetched");
-  }
-    
+      fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${this.state.latitude}&lon=${this.state.longitude}&APPID=c2f6d99c1021899a45402a69657c35aa`)
+      .then(response => response.json())
+      .then(fetchedData => this.setState({weatherData: fetchedData}));
+      console.log("weather fetched");
+  
+      fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.latitude}&lon=${this.state.longitude}&exclude=current,minutely,daily,alerts&appid=c2f6d99c1021899a45402a69657c35aa`)
+      .then(response => response.json())
+      .then(fetchedHourlyData => this.setState({hourlyData: fetchedHourlyData}));
+      console.log("hourly weather fetched");
+  };
+  
   fetchNewLocation = () => {
     fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.searchfield}&APPID=c2f6d99c1021899a45402a69657c35aa`)
     .then(response => response.ok ? response.json() : console.log("response not ok"))
-      // console.log(response.ok);
-      // if (response.ok) {
-    //     response.json()
-    //   // }
-    //   // else if (!response.ok) {
-    //   //   return;
-    //   // }
-    // )
-    // .then(response => response.json())
-    // .then(city => {
-    //   if (city.name.length === 0) {
-    //     return
-    //   }})
     .then(fetchedData => fetchedData !== undefined ? this.setState({weatherData: fetchedData}) : console.log("city not found"));
     console.log("weather fetched");
-  }
+
+    setTimeout(() => {
+      fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.weatherData.coord.lat}&lon=${this.state.weatherData.coord.lon}&exclude=current,minutely,daily,alerts&appid=c2f6d99c1021899a45402a69657c35aa`)
+      .then(response => response.json())
+      .then(fetchedHourlyData => this.setState({hourlyData: fetchedHourlyData}));
+      console.log("hourly weather fetched");
+    }, 300);
+  };
 
   onSearchChange = (event) => {
     this.setState({searchfield: event.target.value});
-  }
+  };
+
   // componentDidUpdate () {
   //   fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${this.state.latitude}&lon=${this.state.longitude}&APPID=c2f6d99c1021899a45402a69657c35aa`)
   //   .then(response => response.json())
@@ -86,7 +88,7 @@ class App extends Component {
   // }
 
   render () {
-    if (this.state.weatherData.length === 0) {
+    if (this.state.weatherData.length === 0 || this.state.hourlyData.length === 0) {
       !this.state.locationFetched ? this.fetchLocation() : this.fetchWeather();
       return <p>Waiting for the data to fetch</p>
     }
@@ -94,6 +96,7 @@ class App extends Component {
       console.log(this.state.latitude);
       console.log(this.state.longitude);
       console.log(this.state.weatherData);
+      console.log(this.state.hourlyData);
       console.log("page rendered");
       console.log(this.state.searchfield);
       
@@ -103,6 +106,7 @@ class App extends Component {
             <p>longitude: {this.state.longitude}</p>
             <p>location: {this.state.weatherData.name}</p> */}
             <General weather={this.state.weatherData} searchChange={this.onSearchChange} searchSubmit={this.fetchNewLocation}/>
+            <MoreDetails weather={this.state.weatherData} hourly={this.state.hourlyData}/>
        </div>
       )
     }

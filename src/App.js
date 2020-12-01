@@ -66,7 +66,7 @@ class App extends Component {
       .then(response => response.json())
       .then(fetchedHourlyData => this.setState({hourlyData: fetchedHourlyData}));
       console.log("hourly weather fetched");
-    }, 300);
+    }, 200);
   };
 
   onSearchChange = (event) => {

@@ -6,8 +6,8 @@ import IconBar from "./IconBar.js";
 // import {ReactComponent as Asd} from "http://openweathermap.org/img/w/02d.png";
 
 const Graph = ({thisHour}) => {
-    
-    let getHours = (unixTime) => {
+
+    const getHours = (unixTime) => {
         return new Date(unixTime * 1000).getHours();
     };
 
@@ -19,7 +19,7 @@ const Graph = ({thisHour}) => {
         {x: 12, y: parseInt((thisHour[12].temp - 273.15).toFixed()), yOffset: -5},
         {x: 15, y: parseInt((thisHour[15].temp - 273.15).toFixed()), yOffset: -5}
     ];
-    
+
     const addZero = (i) => {
         if (i < 10) {
           i = "0" + i;
@@ -41,9 +41,9 @@ const Graph = ({thisHour}) => {
             </XYPlot>
             <IconBar thisHour={thisHour} graphWidth={graphWidth} blockWidth={blockWidth}/>
             <div>
-                <svg width={graphWidth} height={50}>
+                <svg width={graphWidth} height={50} textAnchor={"bottom"} dominantBaseline={"middle"}>
                     <text x={0} y={10}>{thisHour[0].wind_speed}m/s</text>
-                    <text x={blockWidth} y={10}>{thisHour[3].wind_speed}m/s</text>
+                    <text x={blockWidth} y={10} >{thisHour[3].wind_speed}m/s</text>
                     <text x={blockWidth*2} y={10}>{thisHour[6].wind_speed}m/s</text>
                     <text x={blockWidth*3} y={10}>{thisHour[9].wind_speed}m/s</text>
                     <text x={blockWidth*4} y={10}>{thisHour[12].wind_speed}m/s</text>
@@ -51,7 +51,7 @@ const Graph = ({thisHour}) => {
                 </svg>
             </div>
             <div>
-                <svg width={graphWidth} height={50}>
+                <svg width={graphWidth} height={50} textAnchor={"bottom"} dominantBaseline={"middle"}>
                     <text x={0} y={10}>Now</text>
                     <text x={blockWidth} y={10}>{addZero(getHours(thisHour[3].dt))+":00"}</text>
                     <text x={blockWidth*2} y={10}>{addZero(getHours(thisHour[6].dt))+":00"}</text>

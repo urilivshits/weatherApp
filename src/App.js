@@ -10,8 +10,9 @@ class App extends Component {
       longitude: 24.75,
       locationFetched: false,
       searchfield: "",
-      weatherData: [],
-      hourlyData: []
+      currentWeatherData: [],
+      extraWeatherData: [],
+      moreDetailsShown: false
     }
   };
 
@@ -46,25 +47,25 @@ class App extends Component {
   fetchWeather = () => {
       fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${this.state.latitude}&lon=${this.state.longitude}&APPID=c2f6d99c1021899a45402a69657c35aa`)
       .then(response => response.json())
-      .then(fetchedData => this.setState({weatherData: fetchedData}));
+      .then(fetchedData => this.setState({currentWeatherData: fetchedData}));
       console.log("weather fetched");
   
-      fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.latitude}&lon=${this.state.longitude}&exclude=current,minutely,daily,alerts&appid=c2f6d99c1021899a45402a69657c35aa`)
+      fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.latitude}&lon=${this.state.longitude}&exclude=current,minutely,alerts&appid=c2f6d99c1021899a45402a69657c35aa`)
       .then(response => response.json())
-      .then(fetchedHourlyData => this.setState({hourlyData: fetchedHourlyData}));
+      .then(fetchedextraWeatherData => this.setState({extraWeatherData: fetchedextraWeatherData}));
       console.log("hourly weather fetched");
   };
   
   fetchNewLocation = () => {
     fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.searchfield}&APPID=c2f6d99c1021899a45402a69657c35aa`)
     .then(response => response.ok ? response.json() : console.log("response not ok"))
-    .then(fetchedData => fetchedData !== undefined ? this.setState({weatherData: fetchedData}) : console.log("city not found"));
+    .then(fetchedData => fetchedData !== undefined ? this.setState({currentWeatherData: fetchedData}) : console.log("city not found"));
     console.log("weather fetched");
 
     setTimeout(() => {
-      fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.weatherData.coord.lat}&lon=${this.state.weatherData.coord.lon}&exclude=current,minutely,daily,alerts&appid=c2f6d99c1021899a45402a69657c35aa`)
+      fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.currentWeatherData.coord.lat}&lon=${this.state.currentWeatherData.coord.lon}&exclude=current,minutely,alerts&appid=c2f6d99c1021899a45402a69657c35aa`)
       .then(response => response.json())
-      .then(fetchedHourlyData => this.setState({hourlyData: fetchedHourlyData}));
+      .then(fetchedextraWeatherData => this.setState({extraWeatherData: fetchedextraWeatherData}));
       console.log("hourly weather fetched");
     }, 200);
   };
@@ -73,40 +74,32 @@ class App extends Component {
     this.setState({searchfield: event.target.value});
   };
 
-  // componentDidUpdate () {
-  //   fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${this.state.latitude}&lon=${this.state.longitude}&APPID=c2f6d99c1021899a45402a69657c35aa`)
-  //   .then(response => response.json())
-  //   .then(fetchedData => this.setState({weatherData: fetchedData}));
-  //   console.log(2, "weather data fetched");
-  // }
-  
-  // componentDidMount () {
-  //   fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${this.state.latitude}&lon=${this.state.longitude}&APPID=c2f6d99c1021899a45402a69657c35aa`)
-  //   .then(response => response.json())
-  //   .then(fetchedData => this.setState({weatherData: fetchedData}));
-  //   console.log(2, "weather data fetched");
-  // }
+  toggleDetails = () => {
+    this.state.moreDetailsShown ? this.setState({moreDetailsShown: false}) : this.setState({moreDetailsShown: true}) 
+  };
 
   render () {
-    if (this.state.weatherData.length === 0 || this.state.hourlyData.length === 0) {
+    if (this.state.currentWeatherData.length === 0 || this.state.extraWeatherData.length === 0) {
       !this.state.locationFetched ? this.fetchLocation() : this.fetchWeather();
       return <p>Waiting for the data to fetch</p>
     }
     else {
       console.log(this.state.latitude);
       console.log(this.state.longitude);
-      console.log(this.state.weatherData);
-      console.log(this.state.hourlyData);
+      console.log(this.state.currentWeatherData);
+      console.log(this.state.extraWeatherData);
       console.log("page rendered");
       console.log(this.state.searchfield);
       
       return (
-        <div className="App">
-            {/* <p>latitude: {this.state.latitude}</p>
-            <p>longitude: {this.state.longitude}</p>
-            <p>location: {this.state.weatherData.name}</p> */}
-            <General weather={this.state.weatherData} searchChange={this.onSearchChange} searchSubmit={this.fetchNewLocation}/>
-            <MoreDetails weather={this.state.weatherData} hourly={this.state.hourlyData}/>
+        <div className="App tc dib">
+            <General weather={this.state.currentWeatherData} searchChange={this.onSearchChange} searchSubmit={this.fetchNewLocation}/>
+            <button onClick={this.toggleDetails}>More details ></button>
+            {
+              this.state.moreDetailsShown && (
+                <MoreDetails weather={this.state.currentWeatherData} extra={this.state.extraWeatherData}/>
+              )
+            }
        </div>
       )
     }

@@ -1,0 +1,144 @@
+.generalLocation {
+    /* Plovdiv */
+
+    position: absolute;
+    /* width: 154px; */
+    height: 31px;
+    left: 33px;
+    top: 71px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    text-transform: uppercase;
+
+    color: #FFFFFF;
+
+    background: #EEB625;
+    border: none;
+    border-radius: 2px;
+}
+
+::placeholder {
+    color: #FFFFFF;
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #FFFFFF;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #FFFFFF;
+}
+
+.generalTemp {
+    /* 27° */
+
+    position: absolute;
+    width: 148px;
+    height: 90px;
+    left: 30px;
+    top: 94px;
+    margin: 0;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 96px;
+    line-height: 112px;
+
+    color: #FFFFFF;
+}
+
+.generalSymbol {
+    /* C */
+
+    position: absolute;
+    width: 36px;
+    height: 45px;
+    left: 178px;
+    top: 103px;
+    margin: 0;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 56px;
+
+    color: #FFFFFF;
+}
+
+.generalType {
+    /* Sunny */
+
+    position: absolute;
+    width: 144px;
+    height: 31px;
+    left: 30px;
+    top: 197px;
+    margin: 0;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 29px;
+
+    color: #FFFFFF;
+}
+
+.generalBtn {
+    /* More details */
+
+    position: absolute;
+    width: 174px;
+    height: 15px;
+    left: 30px;
+    top: 235px;
+    margin: 0;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+
+    color: #FFFFFF;
+}
+
+.generalBtnSVG {
+    /* Vector 23 */
+
+    position: absolute;
+    width: 3px;
+    height: 6px;
+    left: 100.5px;
+    top: 239.5px;
+    margin: 0;
+
+    border: 1px solid #FFFFFF;
+}
+
+.generalIconClear {
+    /* Group 25 */
+
+    position: absolute;
+    width: 27.42px;
+    height: 28px;
+    left: 144px;
+    top: 154px;
+}
+
+.generalIconElse {
+    /* Group 2 */
+
+    position: absolute;
+    width: 35.49px;
+    height: 34.5px;
+    left: 143px;
+    top: 150px;
+}

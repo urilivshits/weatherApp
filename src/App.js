@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import General from "./General";
 import MoreDetails from "./MoreDetails";
+import "./App.css";
 
 class App extends Component {
   constructor () {
@@ -56,7 +57,9 @@ class App extends Component {
       console.log("hourly weather fetched");
   };
   
-  fetchNewLocation = () => {
+  fetchNewLocation = (event) => {
+    event.preventDefault();
+
     fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.searchfield}&APPID=c2f6d99c1021899a45402a69657c35aa`)
     .then(response => response.ok ? response.json() : console.log("response not ok"))
     .then(fetchedData => fetchedData !== undefined ? this.setState({currentWeatherData: fetchedData}) : console.log("city not found"));
@@ -92,14 +95,14 @@ class App extends Component {
       console.log(this.state.searchfield);
       
       return (
-        <div className="App tc dib">
-            <General weather={this.state.currentWeatherData} searchChange={this.onSearchChange} searchSubmit={this.fetchNewLocation}/>
-            <button onClick={this.toggleDetails}>More details ></button>
-            {
+        <div className="App">
+            <General weather={this.state.currentWeatherData} searchChange={this.onSearchChange} searchSubmit={this.fetchNewLocation} searchField={this.state.searchfield}/>
+            <MoreDetails weather={this.state.currentWeatherData} extra={this.state.extraWeatherData}/>
+            {/* <button onClick={this.toggleDetails}>More details ></button> */}
+            {/* {
               this.state.moreDetailsShown && (
-                <MoreDetails weather={this.state.currentWeatherData} extra={this.state.extraWeatherData}/>
               )
-            }
+            } */}
        </div>
       )
     }

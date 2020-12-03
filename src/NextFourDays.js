@@ -10,7 +10,7 @@ const NextFourDays = ({dailyWeather}) => {
     }
     
     return (
-        <div className="tc dib">
+        <div>
             <table>
                 <tbody>
                     {

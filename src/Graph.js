@@ -27,8 +27,8 @@ const Graph = ({thisHour}) => {
         return i;
     };
 
-    const graphWidth = 500;
-    const blockWidth = 90;
+    const graphWidth = 375;
+    const blockWidth = graphWidth/temp.length;
     
     return (
         <div>
@@ -41,8 +41,8 @@ const Graph = ({thisHour}) => {
             </XYPlot>
             <IconBar thisHour={thisHour} graphWidth={graphWidth} blockWidth={blockWidth}/>
             <div>
-                <svg width={graphWidth} height={50} textAnchor={"bottom"} dominantBaseline={"middle"}>
-                    <text x={0} y={10}>{thisHour[0].wind_speed}m/s</text>
+                <svg fontSize={"12px"} width={graphWidth} height={50} textAnchor={"bottom"} dominantBaseline={"middle"}>
+                    <text  x={10} y={10}>{thisHour[0].wind_speed}m/s</text>
                     <text x={blockWidth} y={10} >{thisHour[3].wind_speed}m/s</text>
                     <text x={blockWidth*2} y={10}>{thisHour[6].wind_speed}m/s</text>
                     <text x={blockWidth*3} y={10}>{thisHour[9].wind_speed}m/s</text>
@@ -51,8 +51,8 @@ const Graph = ({thisHour}) => {
                 </svg>
             </div>
             <div>
-                <svg width={graphWidth} height={50} textAnchor={"bottom"} dominantBaseline={"middle"}>
-                    <text x={0} y={10}>Now</text>
+                <svg fontSize={"12px"} width={graphWidth} height={50} textAnchor={"bottom"} dominantBaseline={"middle"}>
+                    <text x={10} y={10}>Now</text>
                     <text x={blockWidth} y={10}>{addZero(getHours(thisHour[3].dt))+":00"}</text>
                     <text x={blockWidth*2} y={10}>{addZero(getHours(thisHour[6].dt))+":00"}</text>
                     <text x={blockWidth*3} y={10}>{addZero(getHours(thisHour[9].dt))+":00"}</text>

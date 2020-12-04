@@ -1,7 +1,7 @@
 .generalLocation {
     /* Plovdiv */
 
-    position: absolute;
+    position: relative;
     /* width: 154px; */
     height: 31px;
     left: 33px;
@@ -19,7 +19,18 @@
     background: #EEB625;
     border: none;
     border-radius: 2px;
+    outline: none;
 }
+
+/* clears the 'X' from Internet Explorer */
+input[type=search]::-ms-clear {  display: none; width : 0; height: 0; }
+input[type=search]::-ms-reveal {  display: none; width : 0; height: 0; }
+
+/* clears the 'X' from Chrome */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
 
 ::placeholder {
     color: #FFFFFF;
@@ -34,10 +45,22 @@
     color: #FFFFFF;
 }
 
+.generalMagGlass {
+    /* Group 6 */
+
+    position: relative;
+    width: 10px;
+    height: 13.33px;
+    /* left: 116px; */
+    left: 15px;
+    top: 79px;
+}
+
 .generalTemp {
     /* 27° */
 
     position: absolute;
+    /* width: auto; */
     width: 148px;
     height: 90px;
     left: 30px;
@@ -141,4 +164,27 @@
     height: 34.5px;
     left: 143px;
     top: 150px;
+}
+
+.generalLady {
+    /* Group 4 */
+
+
+    position: absolute;
+    width: 217.62px;
+    height: 315.65px;
+    left: 105.79px;
+    top: 308px;
+}
+
+.generalSun {
+   /* Union */
+
+    position: absolute;
+    width: 529.86px;
+    height: 588.61px;
+    left: -97.86px;
+    top: 326px;
+
+    /* background: #FFDB7E; */
 }

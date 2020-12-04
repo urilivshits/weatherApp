@@ -9,7 +9,7 @@ const MoreDetails = ({weather, extra}) => {
 
     return (
         <div>
-            <h3>More Details State</h3>
+            {/* <h3>More Details State</h3> */}
             <div>
                 <p>Wind Speed: {weather.wind.speed}m/s</p>
                 <p>Atmospheric Pressure: {weather.main.pressure}hPa</p>
@@ -17,13 +17,13 @@ const MoreDetails = ({weather, extra}) => {
                 <p>Humidity: {weather.main.humidity}%</p>
             </div>
             <div>
-                <h4>24 - hours forecast</h4>
+                {/* <h4>24 - hours forecast</h4>
                 <p>Temp: {(extra.hourly[0].temp - 273.15).toFixed()}<sup>0</sup>C</p>
                 <p><img alt="icon" src={`http://openweathermap.org/img/w/${extra.hourly[0].weather[0].icon}.png`}></img></p>
                 <p>Wind Speed: {extra.hourly[0].wind_speed}m/s</p>
-                <p>Hours: {getHours(extra.hourly[0].dt)}</p>
+                <p>Hours: {getHours(extra.hourly[0].dt)}</p> */}
                 <Graph thisHour={extra.hourly} />
-                <h4>Next 4 days</h4>
+                {/* <h4>Next 4 days</h4> */}
                 <NextFourDays dailyWeather={extra.daily}/>
                 {/* {
                     extra.hourly.map((weather, i) => {

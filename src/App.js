@@ -69,6 +69,7 @@ class App extends Component {
       fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.currentWeatherData.coord.lat}&lon=${this.state.currentWeatherData.coord.lon}&exclude=current,minutely,alerts&appid=c2f6d99c1021899a45402a69657c35aa`)
       .then(response => response.json())
       .then(fetchedextraWeatherData => this.setState({extraWeatherData: fetchedextraWeatherData}));
+      event.target.reset();
       console.log("hourly weather fetched");
     }, 200);
   };

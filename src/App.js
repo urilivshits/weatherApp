@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import General from "./General";
 import MoreDetails from "./MoreDetails";
+import {myApi} from "./myApi";
 import "./App.css";
 
 class App extends Component {
@@ -47,12 +48,12 @@ class App extends Component {
   };
   
   fetchWeather = () => {
-      fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${this.state.latitude}&lon=${this.state.longitude}&APPID=c2f6d99c1021899a45402a69657c35aa`)
+      fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${this.state.latitude}&lon=${this.state.longitude}&APPID=${myApi.key}`)
       .then(response => response.json())
       .then(fetchedData => this.setState({currentWeatherData: fetchedData}));
       console.log("weather fetched");
   
-      fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.latitude}&lon=${this.state.longitude}&exclude=current,minutely,alerts&appid=c2f6d99c1021899a45402a69657c35aa`)
+      fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.latitude}&lon=${this.state.longitude}&exclude=current,minutely,alerts&appid=${myApi.key}`)
       .then(response => response.json())
       .then(fetchedextraWeatherData => this.setState({extraWeatherData: fetchedextraWeatherData}));
       console.log("hourly weather fetched");
@@ -61,13 +62,13 @@ class App extends Component {
   fetchNewLocation = (event) => {
     event.preventDefault();
 
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.searchfield}&APPID=c2f6d99c1021899a45402a69657c35aa`)
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.searchfield}&APPID=${myApi.key}`)
     .then(response => response.ok ? response.json() : console.log("response not ok"))
     .then(fetchedData => fetchedData !== undefined ? this.setState({currentWeatherData: fetchedData, searchfield: ""}) : console.log("city not found"));
     console.log("weather fetched");
 
     setTimeout(() => {
-      fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.currentWeatherData.coord.lat}&lon=${this.state.currentWeatherData.coord.lon}&exclude=current,minutely,alerts&appid=c2f6d99c1021899a45402a69657c35aa`)
+      fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${this.state.currentWeatherData.coord.lat}&lon=${this.state.currentWeatherData.coord.lon}&exclude=current,minutely,alerts&appid=${myApi.key}`)
       .then(response => response.json())
       .then(fetchedextraWeatherData => this.setState({extraWeatherData: fetchedextraWeatherData}));
       event.target.reset();

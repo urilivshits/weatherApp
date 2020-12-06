@@ -4,8 +4,8 @@ import MoreDetails from "./MoreDetails";
 import "./App.css";
 
 class App extends Component {
-  constructor () {
-    super () 
+  constructor (props) {
+    super (props) 
     this.state = {
       latitude: 42.15,
       longitude: 24.75,
@@ -13,8 +13,9 @@ class App extends Component {
       searchfield: "",
       currentWeatherData: [],
       extraWeatherData: [],
-      moreDetailsShown: false
+      moreDetailsShown: false,
     }
+    // this.toggleDetails = this.toggleDetails.bind(this);
   };
 
   fetchLocation = () => {
@@ -62,7 +63,7 @@ class App extends Component {
 
     fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.searchfield}&APPID=c2f6d99c1021899a45402a69657c35aa`)
     .then(response => response.ok ? response.json() : console.log("response not ok"))
-    .then(fetchedData => fetchedData !== undefined ? this.setState({currentWeatherData: fetchedData}) : console.log("city not found"));
+    .then(fetchedData => fetchedData !== undefined ? this.setState({currentWeatherData: fetchedData, searchfield: ""}) : console.log("city not found"));
     console.log("weather fetched");
 
     setTimeout(() => {
@@ -88,22 +89,20 @@ class App extends Component {
       return <p>Waiting for the data to fetch</p>
     }
     else {
-      console.log(this.state.latitude);
-      console.log(this.state.longitude);
       console.log(this.state.currentWeatherData);
       console.log(this.state.extraWeatherData);
-      console.log("page rendered");
       console.log(this.state.searchfield);
+      console.log("page rendered");
       
       return (
         <div className="App">
-            <General weather={this.state.currentWeatherData} searchChange={this.onSearchChange} searchSubmit={this.fetchNewLocation} searchField={this.state.searchfield}/>
-            <MoreDetails weather={this.state.currentWeatherData} extra={this.state.extraWeatherData}/>
+            <General weather={this.state.currentWeatherData} searchChange={this.onSearchChange} searchSubmit={this.fetchNewLocation} searchField={this.state.searchfield} toggleDetails={this.toggleDetails.bind(this)}/>
             {/* <button onClick={this.toggleDetails}>More details ></button> */}
-            {/* {
+            {
               this.state.moreDetailsShown && (
+                <MoreDetails weather={this.state.currentWeatherData} extra={this.state.extraWeatherData} />
               )
-            } */}
+            }
        </div>
       )
     }

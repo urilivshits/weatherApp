@@ -1,3 +1,9 @@
+.generalBody {
+    background: #EEB625;;
+    width: 375px;
+    height: 812px;
+}
+
 .generalLocation {
     /* Plovdiv */
 
@@ -49,19 +55,28 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     /* Group 6 */
 
     position: relative;
-    width: 10px;
-    height: 13.33px;
+    width: 16px;
+    height: 16px;
     /* left: 116px; */
     left: 15px;
-    top: 79px;
+    top: 73px;
+}
+
+.generalInfoHandler {
+    position: absolute;
+    top: 0;
+    width: 375px;
+    height: 0px;
+    display: flex;
+    /* user-select: none; */
 }
 
 .generalTemp {
     /* 27° */
 
-    position: absolute;
-    /* width: auto; */
-    width: 148px;
+    /* position: absolute; */
+    position: relative;
+    /* width: 148px; */
     height: 90px;
     left: 30px;
     top: 94px;
@@ -74,15 +89,19 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     line-height: 112px;
 
     color: #FFFFFF;
+
+    /* z-index: -1; */
 }
 
 .generalSymbol {
     /* C */
 
-    position: absolute;
+    /* position: absolute; */
+    position: relative;
     width: 36px;
     height: 45px;
-    left: 178px;
+    /* left: 178px; */
+    left: 36px;
     top: 103px;
     margin: 0;
 
@@ -93,6 +112,31 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     line-height: 56px;
 
     color: #FFFFFF;
+}
+
+.generalIconClear {
+    /* Group 25 */
+
+    /* position: absolute; */
+    position: relative;
+    width: 27.42px;
+    height: 28px;
+    /* left: 144px; */
+    left: -36px;
+    /* top: 154px; */
+    top: 154px;
+}
+
+.generalIconElse {
+    /* Group 2 */
+
+    /* position: absolute; */
+    position: relative;
+    width: 35.49px;
+    height: 34.5px;
+    /* left: 143px; */
+    left: -37px;
+    top: 150px;
 }
 
 .generalType {
@@ -146,25 +190,6 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     border: 1px solid #FFFFFF;
 }
 
-.generalIconClear {
-    /* Group 25 */
-
-    position: absolute;
-    width: 27.42px;
-    height: 28px;
-    left: 144px;
-    top: 154px;
-}
-
-.generalIconElse {
-    /* Group 2 */
-
-    position: absolute;
-    width: 35.49px;
-    height: 34.5px;
-    left: 143px;
-    top: 150px;
-}
 
 .generalLady {
     /* Group 4 */
@@ -181,10 +206,23 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
    /* Union */
 
     position: absolute;
-    width: 529.86px;
-    height: 588.61px;
-    left: -97.86px;
+    /* width: 529.86px;
+    height: 588.61px; */
+    /* left: -97.86px; */
+    left: 0px;
     top: 326px;
+    
+    /* overflow: hidden; */
 
     /* background: #FFDB7E; */
+}
+
+.generalCloud {
+    /* Group 3 */
+
+    position: absolute;
+    width: 413.16px;
+    height: 272.84px;
+    left: -74px;
+    top: 521.41px;
 }

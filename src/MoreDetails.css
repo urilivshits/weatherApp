@@ -1,0 +1,251 @@
+
+/* .detailsWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 375px;
+    height: 812px;
+    z-index: 0;
+
+} */
+
+.detailsWindSpeedName {
+    /* N */
+    
+    position: absolute;
+    width: 87px;
+    height: 18px;
+    left: 29px;
+    top: 315px;
+    
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    
+    color: #FFFFFF;
+    z-index: 3;
+}
+
+.detailsWindSpeedData {
+    /* 7.7KM/H */
+
+    position: absolute;
+    width: 67px;
+    height: 18px;
+    left: 29px;
+    top: 337px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    text-transform: lowercase;
+
+    color: #FFFFFF;
+    z-index: 3;
+
+}
+
+.detailsWindSpeedIcon {
+    /* Group 21 */
+
+    position: absolute;
+    width: 25.5px;
+    height: 24px;
+    /* left: 106px; */
+    left: 125px;
+    top: 330px;
+    /* top: 340px; */
+    z-index: 3;
+
+}
+
+.detailsCloudinessName {
+    /* N */
+
+    position: absolute;
+    width: 26px;
+    height: 18px;
+    left: 29px;
+    top: 395px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #FFFFFF;
+    z-index: 3;
+
+}
+
+.detailsCloudinessData {
+    /* 7.7KM/H */
+
+    position: absolute;
+    width: 67px;
+    height: 18px;
+    left: 29px;
+    top: 417px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    text-transform: lowercase;
+
+    color: #FFFFFF;
+    z-index: 3;
+}
+
+.detailCloudinessIcon {
+    /* Group 24 */
+
+    position: absolute;
+    width: 23.5px;
+    height: 24px;
+    /* left: 109px; */
+    left: 128px;
+    top: 409px;
+    z-index: 3;
+}
+
+.detailsAtmPressName {
+    /* N */
+
+    position: absolute;
+    /* width: 26px; */
+    width: 126px;
+    height: 18px;
+    left: 213px;
+    top: 315px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #FFFFFF;
+    z-index: 3;
+
+}
+
+.detailsAtmPressData {
+    /* 7.7KM/H */
+
+    position: absolute;
+    width: 67px;
+    height: 18px;
+    left: 213px;
+    top: 337px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    text-transform: lowercase;
+
+    color: #FFFFFF;
+    z-index: 3;
+}
+
+.detailsAtmPressIcon {
+    position: absolute;
+    width: 11px;
+    height: 29px;
+    /* left: 293px; */
+    left: 303px;
+    /* top: 322px; */
+    top: 330px;
+    z-index: 3;
+}
+
+.detailsHumidityName {
+    /* N */
+
+    position: absolute;
+    width: 26px;
+    height: 18px;
+    left: 213px;
+    top: 395px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #FFFFFF;
+    z-index: 3;
+}
+
+.detailsHumidityData {
+    /* 7.7KM/H */
+
+    position: absolute;
+    width: 67px;
+    height: 18px;
+    left: 213px;
+    top: 417px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    text-transform: lowercase;
+
+    color: #FFFFFF;
+    z-index: 3;
+}
+
+.detailsHumidityIcon {
+    /* Group 23 */
+
+
+    position: absolute;
+    width: 21px;
+    height: 21px;
+    /* left: 290px; */
+    left: 298px;
+    /* top: 406px; */
+    top: 409px;
+    z-index: 3;
+}
+
+.details24Name {
+    /* 24 - HOURS FORECAST */
+
+    position: absolute;
+    width: 148px;
+    height: 18px;
+    left: 29px;
+    top: 511px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    text-transform: lowercase;
+
+    color: #FFFFFF;
+    z-index: 3;
+}
+
+.detailsGraph {
+    position: absolute;
+    top: 550px;
+    z-index: 3;
+    color: #FFFFFF;
+    /* align-items: center;
+    align-content: center; */
+    text-align: center;
+}

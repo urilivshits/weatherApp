@@ -2,54 +2,19 @@ import React, { useEffect, useRef, useState } from "react";
 import GeneralWeatherTypeCheck from "./GeneralWeatherTypeCheck";
 import GeneralWeatherImage from "./GeneralWeatherImage";
 import GeneralLady from "./GeneralLady"
+import GeneralBtnSVG from "./GeneralBtnSVG";
 import "./General.css";
 
 const General = ({weather, searchChange, searchSubmit, searchField, toggleDetails}) => {
     
-    // const adjustPositionSymbol = () => {
-    //     if ((weather.main.temp - 273.15).toFixed() < 10) {
-    //         return {left: "148px"}
-    //     }
-    // };
-
-    // }
-    // const positionRef = useRef(null);
-
-    // const [elementPositionWidth, setelementPositionWidth] = useState(true);
-    // // console.log(1, elementPositionWidth);
-    // useEffect(() => {
-    //     // const currentRef = positionRef.current;
-    //     // console.log(getComputedStyle(currentRef).left);
-    //     // console.log(getComputedStyle(document.querySelector(".generalSymbol")).left);
-    //     // (weather.main.temp - 273.15).toFixed() < 10 ? 
-    //     // getComputedStyle(document.querySelector(".generalSymbol")).left = "148px" : console.log("hey")
-        
-    //     // console.log(getComputedStyle(document.querySelector(".generalTemp")).width);
-    //     const newWidth = getComputedStyle(document.querySelector(".generalTemp")).width;
-    //     // console.log(2, newWidth);
-    //     // console.log(elementPositionWidth);
-    //     setelementPositionWidth(!elementPositionWidth);
-    //     // console.log(newWidth);
-    //     // console.log(2, newWidth);
-    //     // if ((weather.main.temp - 273.15).toFixed() < 10) {
-    //     //     // return {left: "148px"}
-    //     //     // const newWidth = getComputedStyle(document.querySelector(".generalSymbol")).left;
-    //     //     // console.log(2, newWidth);
-    //     //     // getComputedStyle(currentRef).className = "generalLocation";
-    //     //     // console.log(3, getComputedStyle(currentRef).className);
-    //     // }
-    // }, []);
-
     let [input, setInput] = useState(false);
-    console.log("input clicked", input);
-    console.log("searchfield", searchField);
 
     const searchFieldSize = () => {
         if (searchField.length < weather.name.length) {
-            return weather.name.length+4; 
+            return weather.name.length+3; 
         }
         else {
-            return searchField.length+4;
+            return searchField.length+3;
         }
     }; 
 
@@ -62,9 +27,23 @@ const General = ({weather, searchChange, searchSubmit, searchField, toggleDetail
         }
     }
 
+    const transitionCheck = () => {
+        return wrapper ? {transition: "top 300ms", top: "-54px"} : {transition: "top 300ms", top: "0px"};
+    };
+
+    // console.log("heeeeey", getComputedStyle(document.querySelector(".generalLocation")).height);
+    const [wrapper, setWrapper] = useState(false);
+
+    const toggleWrapperClass = () => {
+        setWrapper(!wrapper);
+    };
+
+    console.log(wrapper);
+    
     return (
         <div className="generalBody" style={backgroundColorCheck(weather.weather[0].main)}>
-            <div>
+            
+            <div className="generalWidgetWrapper" style={transitionCheck()}>
                 <form onSubmit={searchSubmit} onSubmitCapture={() => searchField.length !== 0 ? setInput(input) : null}>
                     <label style={{width: "375px", height: "230px", display: "inline-block", position: "absolute", zIndex: "1"}}>
                         <input className="generalLocation" onFocus={() => setInput(input = true)} onBlur={() => searchField.length !== 0 ? null : setInput(input = false)} size={searchFieldSize()} type="search" name="location" placeholder={!input ? weather.name : searchField} onChange={searchChange} autoComplete="off" style={backgroundColorCheck(weather.weather[0].main)}/>
@@ -79,14 +58,21 @@ const General = ({weather, searchChange, searchSubmit, searchField, toggleDetail
                     <p className="generalTemp">{(weather.main.temp - 273.15).toFixed()}&#176;</p>
                     <p className="generalSymbol">C</p>
                     < GeneralWeatherTypeCheck weatherType={weather.weather[0].main}/>
-                    <p className="generalType">{weather.weather[0].main}</p>
                 </div>
+                <p className="generalType">{weather.weather[0].main}</p>
             </div>
-            <p onClick={toggleDetails} className="generalBtn">More details</p>
-            <svg className="generalBtnSVG" width="4" height="7" viewBox="0 0 4 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {/* changed stroke-linecap, stroke-linejoin, stroke-width to camelCase below */}
-                <path d="M0.5 0.5L3.5 3.5L0.5 6.5" stroke="white" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+
+            <div className="generalBtnWrapper" style={transitionCheck()}>
+                <p onClick={toggleWrapperClass} className="generalBtn">{!wrapper ? "More details" : "Details"}</p>
+                {/* <p onClick={toggleDetails} className="generalBtn">More details</p> */}
+                <GeneralBtnSVG wrapper={wrapper} />
+            </div>
+            {/* <div className="testDiv">
+                <p className="testP">test</p>
+                <p className="testP">test</p>
+                <p className="testP">test</p>
+            </div> */}
+
             <GeneralWeatherImage weatherType={weather.weather[0].main}/>
             <GeneralLady />  
         </div>
@@ -95,3 +81,4 @@ const General = ({weather, searchChange, searchSubmit, searchField, toggleDetail
 
 export default General;
 
+            

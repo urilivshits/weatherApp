@@ -2,7 +2,44 @@
     background: #EEB625;;
     width: 375px;
     height: 812px;
+    /* overflow: scroll; */
 }
+
+/* .testDiv {
+    background: red;
+    width: 375px;
+    height: 200px;
+    position: absolute;
+    top: 812px;
+    transition: top 300ms;
+    z-index: 5;
+}
+
+.testDiv:hover {
+    top: 250px;
+}
+
+.testP {
+    text-align: center;
+    width: 50px;
+    top: 30px;
+    left: 10px;
+    position: relative;
+} */
+
+.generalWidgetWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 375px;
+    height: 230px;
+
+    /* transition: top 300ms; */
+}
+
+/* .generalWrapper:hover {
+    top: -54px;
+} */
 
 .generalLocation {
     /* Plovdiv */
@@ -55,11 +92,11 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     /* Group 6 */
 
     position: relative;
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     /* left: 116px; */
-    left: 15px;
-    top: 73px;
+    left: 20px;
+    top: 75px;
 }
 
 .generalInfoHandler {
@@ -142,7 +179,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 .generalType {
     /* Sunny */
 
-    position: absolute;
+    position: relative;
     width: 144px;
     height: 31px;
     left: 30px;
@@ -158,15 +195,29 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     color: #FFFFFF;
 }
 
+.generalBtnWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 375px;
+    height: 250px;
+
+}
+
 .generalBtn {
     /* More details */
 
-    position: absolute;
+    /* position: absolute; */
+    position: relative;
     width: 174px;
     height: 15px;
     left: 30px;
     top: 235px;
     margin: 0;
+    /* padding-right: 0px;
+    padding-right: 0px; */
+    /* margin-block-end: 0px; */
+    /* border: 0; */
 
     font-family: Roboto;
     font-style: normal;
@@ -180,16 +231,27 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 .generalBtnSVG {
     /* Vector 23 */
 
-    position: absolute;
+    /* position: absolute;
     width: 3px;
     height: 6px;
     left: 100.5px;
     top: 239.5px;
     margin: 0;
 
-    border: 1px solid #FFFFFF;
-}
+    border: 1px solid #FFFFFF; */
 
+    /* position: absolute; */
+    position: relative;
+    width: 5px;
+    height: 10px;
+    left: 110px;
+    /* top: 235px; */
+    top: 216.45px;
+
+    /* border: 2px solid #FFFFFF; */
+    /* transform: rotate(90deg); */
+    transition: transform 300ms;
+}
 
 .generalLady {
     /* Group 4 */

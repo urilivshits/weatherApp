@@ -16,7 +16,7 @@ class App extends Component {
       extraWeatherData: [],
       moreDetailsShown: false,
     }
-    // this.toggleDetails = this.toggleDetails.bind(this);
+    // this.toggleDetails = this.toggleDetails;
   };
 
   fetchLocation = () => {
@@ -97,13 +97,13 @@ class App extends Component {
       
       return (
         <div className="App">
-            <General weather={this.state.currentWeatherData} searchChange={this.onSearchChange} searchSubmit={this.fetchNewLocation} searchField={this.state.searchfield} toggleDetails={this.toggleDetails.bind(this)}/>
+            <General weather={this.state.currentWeatherData} searchChange={this.onSearchChange} searchSubmit={this.fetchNewLocation} searchField={this.state.searchfield} toggleDetails={this.toggleDetails}/>
             {/* <button onClick={this.toggleDetails}>More details ></button> */}
-            {
+            <MoreDetails weather={this.state.currentWeatherData} extra={this.state.extraWeatherData} />
+            {/* {
               this.state.moreDetailsShown && (
-                <MoreDetails weather={this.state.currentWeatherData} extra={this.state.extraWeatherData} />
               )
-            }
+            } */}
        </div>
       )
     }

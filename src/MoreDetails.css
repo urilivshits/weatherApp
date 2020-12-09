@@ -1,13 +1,24 @@
-
-/* .detailsWrapper {
+.detailsWrapper {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 812;
+    left: 100;
     width: 375px;
     height: 812px;
-    z-index: 0;
+    z-index: 3;
+    display: flex;
+    overflow: hidden;
 
+}
+
+/* .detailsWrapperTouchable {
+    top: 250px;
+    left: 0px;
+    width: 375px;
+    height: 562px;
+    position: absolute;
+    z-index: 10;
 } */
+
 
 .detailsWindSpeedName {
     /* N */
@@ -46,7 +57,6 @@
 
     color: #FFFFFF;
     z-index: 3;
-
 }
 
 .detailsWindSpeedIcon {

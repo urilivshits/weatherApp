@@ -97,9 +97,9 @@ class App extends Component {
       
       return (
         <div className="App">
-            <General weather={this.state.currentWeatherData} searchChange={this.onSearchChange} searchSubmit={this.fetchNewLocation} searchField={this.state.searchfield} toggleDetails={this.toggleDetails}/>
+            <General weather={this.state.currentWeatherData} extra={this.state.extraWeatherData} searchChange={this.onSearchChange} searchSubmit={this.fetchNewLocation} searchField={this.state.searchfield} toggleDetails={this.toggleDetails}/>
             {/* <button onClick={this.toggleDetails}>More details ></button> */}
-            <MoreDetails weather={this.state.currentWeatherData} extra={this.state.extraWeatherData} />
+            {/* <MoreDetails weather={this.state.currentWeatherData} extra={this.state.extraWeatherData} /> */}
             {/* {
               this.state.moreDetailsShown && (
               )

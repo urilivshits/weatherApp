@@ -12,13 +12,22 @@ const Graph = ({thisHour}) => {
     };
 
     const temp = [
-        {x: 0, y: parseInt((thisHour[0].temp - 273.15).toFixed()), yOffset: -7},
-        {x: 3, y: parseInt((thisHour[3].temp - 273.15).toFixed()), yOffset: -7},
-        {x: 6, y: parseInt((thisHour[6].temp - 273.15).toFixed()), yOffset: -7},
-        {x: 9, y: parseInt((thisHour[9].temp - 273.15).toFixed()), yOffset: -7},
-        {x: 12, y: parseInt((thisHour[12].temp - 273.15).toFixed()), yOffset: -7},
-        {x: 15, y: parseInt((thisHour[15].temp - 273.15).toFixed()), yOffset: -7}
+        {x: 0, y: (thisHour[0].temp - 273.15).toFixed(), yOffset: -7},
+        {x: 3, y: (thisHour[3].temp - 273.15).toFixed(), yOffset: -7},
+        {x: 6, y: (thisHour[6].temp - 273.15).toFixed(), yOffset: -7},
+        {x: 9, y: (thisHour[9].temp - 273.15).toFixed(), yOffset: -7},
+        {x: 12, y: (thisHour[12].temp - 273.15).toFixed(), yOffset: -7},
+        {x: 15, y: (thisHour[15].temp - 273.15).toFixed(), yOffset: -7}
     ];
+
+    // const temp = [
+    //     {x: 0, y: parseInt((thisHour[0].temp - 273.15).toFixed()), yOffset: -7},
+    //     {x: 3, y: parseInt((thisHour[3].temp - 273.15).toFixed()), yOffset: -7},
+    //     {x: 6, y: parseInt((thisHour[6].temp - 273.15).toFixed()), yOffset: -7},
+    //     {x: 9, y: parseInt((thisHour[9].temp - 273.15).toFixed()), yOffset: -7},
+    //     {x: 12, y: parseInt((thisHour[12].temp - 273.15).toFixed()), yOffset: -7},
+    //     {x: 15, y: parseInt((thisHour[15].temp - 273.15).toFixed()), yOffset: -7}
+    // ];
 
     const addZero = (i) => {
         if (i < 10) {

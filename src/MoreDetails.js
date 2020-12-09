@@ -3,11 +3,13 @@ import Graph from "./Graph.js";
 import NextFourDays from "./NextFourDays.js";
 import "./MoreDetails.css";
 
-const MoreDetails = ({weather, extra}) => {
-
+const MoreDetails = ({weather, extra, wrapper}) => {
+    const transitionCheck = () => {
+        return wrapper ? {transition: "top 300ms", top: "0px"} : {transition: "top 300ms", top: "812px"};
+    };
     return (
-        <div className="detailsWrapper">
-            <div>
+        <div className="detailsWrapper" style={transitionCheck()}>
+            {/* <div className="detailsWrapperTouchable"> */}
                 <div>
                     <p className="detailsWindSpeedName">Wind Speed</p>
                     <p className="detailsWindSpeedData">{weather.wind.speed}m/s</p>
@@ -66,11 +68,11 @@ const MoreDetails = ({weather, extra}) => {
                     </svg>
                 </div>
                 <p className="details24Name">24 - hours forecast</p>
-            </div>
-            <div className="detailsGraph">
-                <Graph thisHour={extra.hourly} />
-            </div>
-                <NextFourDays dailyWeather={extra.daily}/>
+                <div className="detailsGraph">
+                    <Graph thisHour={extra.hourly} />
+                </div>
+            {/* </div> */}
+                {/* <NextFourDays dailyWeather={extra.daily}/> */}
         </div>
     )
 };

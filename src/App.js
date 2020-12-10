@@ -16,7 +16,6 @@ class App extends Component {
       extraWeatherData: [],
       moreDetailsShown: false,
     }
-    // this.toggleDetails = this.toggleDetails;
   };
 
   fetchLocation = () => {

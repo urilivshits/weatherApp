@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import Graph from "./Graph.js";
 import NextFourDays from "./NextFourDays.js";
 import "./MoreDetails.css";
 
-const MoreDetails = ({weather, extra, wrapper}) => {
+const MoreDetails = ({weather, extra, wrapper, tempFormat, next4DaysWrapper, setNext4DaysWrapper}) => {
+    
     const transitionCheck = () => {
-        return wrapper ? {transition: "top 300ms", top: "0px"} : {transition: "top 300ms", top: "812px"};
+        if (!next4DaysWrapper) {
+            return wrapper ? {transition: "top 300ms", top: "0px"} : {transition: "top 300ms", top: "812px"};
+        }
+        else if (next4DaysWrapper) {
+            return wrapper ? {transition: "top 300ms", top: "-120px"} : {transition: "top 300ms", top: "812px"};
+        }
     };
+
+    const scroll = (event) => {
+        console.log("heyNext", event.nativeEvent.wheelDelta);
+        event.nativeEvent.wheelDelta < 0 ? setNext4DaysWrapper(true) : setNext4DaysWrapper(false);
+    };
+
     return (
         <div className="detailsWrapper" style={transitionCheck()}>
-            {/* <div className="detailsWrapperTouchable"> */}
                 <div>
                     <p className="detailsWindSpeedName">Wind Speed</p>
                     <p className="detailsWindSpeedData">{weather.wind.speed}m/s</p>
@@ -69,10 +80,16 @@ const MoreDetails = ({weather, extra, wrapper}) => {
                 </div>
                 <p className="details24Name">24 - hours forecast</p>
                 <div className="detailsGraph">
-                    <Graph thisHour={extra.hourly} />
+                    <Graph thisHour={extra.hourly} tempFormat={tempFormat}/>
                 </div>
-            {/* </div> */}
-                {/* <NextFourDays dailyWeather={extra.daily}/> */}
+                <div className="detailsNext4DaysWrapper" onClick={() => setNext4DaysWrapper(!next4DaysWrapper)}>
+                    <p className="detailsNext4DaysName">Next 4 days</p>
+                    <svg style={next4DaysWrapper ? {transform: "rotate(90deg)"} : {transform: "rotate(0deg)"}} className="detailsBtnSVG" width="4" height="7" viewBox="0 0 4 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        {/* changed stroke-linecap, stroke-linejoin, stroke-width to camelCase below */}
+                        <path d="M0.5 0.5L3.5 3.5L0.5 6.5" stroke="white" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    <NextFourDays dailyWeather={extra.daily} tempFormat={tempFormat}/>
+                </div>
         </div>
     )
 };

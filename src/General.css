@@ -158,7 +158,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     /* position: absolute; */
     position: relative;
     width: 36px;
-    height: 45px;
+    height: 50px;
     /* left: 178px; */
     left: 36px;
     /* top: 103px; */
@@ -173,7 +173,8 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 
     color: #FFFFFF;
 
-    transition: all 300ms;    
+    transition: all 300ms;
+    z-index: 4;    
 }
 
 .generalSymbolSmall {
@@ -181,7 +182,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 
     position: relative;
     width: 36px;
-    height: 45px;
+    height: 50px;
     left: 36px;
     /* top: 103px; */
     top: 101px;
@@ -196,6 +197,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     color: #FFFFFF;
 
     transition: all 300ms;    
+    z-index: 4;    
 }
 
 .generalIconClear {
@@ -300,7 +302,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 
     /* border: 2px solid #FFFFFF; */
     /* transform: rotate(90deg); */
-    transition: transform 300ms;
+    transition: transform 500ms;
 }
 
 .generalTouchable {
@@ -309,9 +311,10 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     left: 0px;
     width: 375px;
     /* height: 562px; */
-    height: 812px;
-    /* position: absolute; */
-    position: relative;
+    /* height: 812px; */
+    height: 627px;
+    /* position: relative; */
+    position: absolute;
     /* z-index: 10; */
     z-index: 4;
 }

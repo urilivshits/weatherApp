@@ -31,13 +31,13 @@ const IconBar = ({props, thisHour, graphWidth, blockWidth}) => {
 
     return (
         <div>
-            <canvas ref={canvasRef} width={graphWidth} height="50" {...props}/>
-            <img ref={imageRef1} className="hidden" width={"50px"} height={"50px"} alt={"icon"} src={`http://openweathermap.org/img/w/${thisHour[0].weather[0].icon}.png`}/>
-            <img ref={imageRef2} className="hidden" width={"50px"} height={"50px"} alt={"icon"} src={`http://openweathermap.org/img/w/${thisHour[3].weather[0].icon}.png`}/>
-            <img ref={imageRef3} className="hidden" width={"50px"} height={"50px"} alt={"icon"} src={`http://openweathermap.org/img/w/${thisHour[6].weather[0].icon}.png`}/>
-            <img ref={imageRef4} className="hidden" width={"50px"} height={"50px"} alt={"icon"} src={`http://openweathermap.org/img/w/${thisHour[9].weather[0].icon}.png`}/>
-            <img ref={imageRef5} className="hidden" width={"50px"} height={"50px"} alt={"icon"} src={`http://openweathermap.org/img/w/${thisHour[12].weather[0].icon}.png`}/>
-            <img ref={imageRef6} className="hidden" width={"50px"} height={"50px"} alt={"icon"} src={`http://openweathermap.org/img/w/${thisHour[15].weather[0].icon}.png`}/>
+            <canvas ref={canvasRef} width={graphWidth} height="45" {...props}/>
+            <img ref={imageRef1} className="hidden" width={"40px"} height={"40px"} alt={"icon"} src={`http://openweathermap.org/img/w/${thisHour[0].weather[0].icon}.png`}/>
+            <img ref={imageRef2} className="hidden" width={"40px"} height={"40px"} alt={"icon"} src={`http://openweathermap.org/img/w/${thisHour[3].weather[0].icon}.png`}/>
+            <img ref={imageRef3} className="hidden" width={"40px"} height={"40px"} alt={"icon"} src={`http://openweathermap.org/img/w/${thisHour[6].weather[0].icon}.png`}/>
+            <img ref={imageRef4} className="hidden" width={"40px"} height={"40px"} alt={"icon"} src={`http://openweathermap.org/img/w/${thisHour[9].weather[0].icon}.png`}/>
+            <img ref={imageRef5} className="hidden" width={"40px"} height={"40px"} alt={"icon"} src={`http://openweathermap.org/img/w/${thisHour[12].weather[0].icon}.png`}/>
+            <img ref={imageRef6} className="hidden" width={"40px"} height={"40px"} alt={"icon"} src={`http://openweathermap.org/img/w/${thisHour[15].weather[0].icon}.png`}/>
         </div>
     )
 }

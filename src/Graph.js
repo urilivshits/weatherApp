@@ -20,12 +20,12 @@ const Graph = ({thisHour, tempFormat}) => {
     };
 
     const temp = [
-        {x: 0, y: finalTemp(thisHour[0].temp).toString(), yOffset: -7},
-        {x: 3, y: finalTemp(thisHour[3].temp).toString(), yOffset: -7},
-        {x: 6, y: finalTemp(thisHour[6].temp).toString(), yOffset: -7},
-        {x: 9, y: finalTemp(thisHour[9].temp).toString(), yOffset: -7},
-        {x: 12, y: finalTemp(thisHour[12].temp).toString(), yOffset: -7},
-        {x: 15, y: finalTemp(thisHour[15].temp).toString(), yOffset: -7}
+        {x: 0, y: parseInt(finalTemp(thisHour[0].temp)), yOffset: -7},
+        {x: 3, y: parseInt(finalTemp(thisHour[3].temp)), yOffset: -7},
+        {x: 6, y: parseInt(finalTemp(thisHour[6].temp)), yOffset: -7},
+        {x: 9, y: parseInt(finalTemp(thisHour[9].temp)), yOffset: -7},
+        {x: 12, y: parseInt(finalTemp(thisHour[12].temp)), yOffset: -7},
+        {x: 15, y: parseInt(finalTemp(thisHour[15].temp)), yOffset: -7}
     ];
 
     const addZero = (i) => {
@@ -43,8 +43,10 @@ const Graph = ({thisHour, tempFormat}) => {
         top: "-15"
     };
 
+    const zerosLabelFix = (d) => {
+        return d.y === 0 ? d.y = "0" : d.y;
+    }
     
-
     return (
         <div>
             <XYPlot
@@ -52,7 +54,7 @@ const Graph = ({thisHour, tempFormat}) => {
                 height={100}
                 margin={{left: 20, right: 20, top: 20, bottom: 20}}>
                 <LineSeries stroke={"#FFFFFF"} strokeWidth={"2.5px"} data={temp}/>
-                <LabelSeries color={"#FFFFFF"} style={{fill: "#FFFFFF", fillWidth: "1px"}} data={temp} getLabel={d => d.y}  labelAnchorX={"middle"} labelAnchorY={"middle"}/>
+                <LabelSeries color={"#FFFFFF"} style={{fill: "#FFFFFF", fillWidth: "1px"}} data={temp} getLabel={zerosLabelFix}  labelAnchorX={"middle"} labelAnchorY={"middle"}/>
             </XYPlot>
             <IconBar thisHour={thisHour} graphWidth={graphWidth} blockWidth={blockWidth}/>
             <div>

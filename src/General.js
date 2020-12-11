@@ -13,8 +13,6 @@ const General = ({weather, extra, searchChange, searchSubmit, searchField}) => {
     let [tempFormat, setTempFormat] = useState(true);
     let [next4DaysWrapper, setNext4DaysWrapper] = useState(false);
 
-
-
     const searchFieldSize = () => {
         if (searchField.length < weather.name.length) {
             return weather.name.length+3; 
@@ -46,10 +44,10 @@ const General = ({weather, extra, searchChange, searchSubmit, searchField}) => {
         setWrapper(!wrapper);
     };
 
-    console.log(wrapper);
+    // console.log(wrapper);
     
     const scroll = (event) => {
-        console.log("hey", event.nativeEvent.wheelDelta);
+        // console.log("hey", event.nativeEvent.wheelDelta);
         if (wrapper) {
             event.nativeEvent.wheelDelta < 0 ? setNext4DaysWrapper(true) : setNext4DaysWrapper(false);
         }
@@ -63,10 +61,14 @@ const General = ({weather, extra, searchChange, searchSubmit, searchField}) => {
 
     const inputFocus = () => {
         setInput(input = true);
-        return wrapper ? setWrapper(wrapper = false) : null
+        return wrapper ? setWrapper(wrapper = false) : null;
     };
 
-    const inputSubmit = () => {
+    const inputBlur = () => {
+        return searchField.length !== 0 ? null : setInput(input = false);
+    };
+
+    const inputSubmit = (event) => {
         if (searchField.length !== 0) {
             setInput(input);
             setWrapper(wrapper = true);
@@ -94,7 +96,7 @@ const General = ({weather, extra, searchChange, searchSubmit, searchField}) => {
                 <form onSubmit={searchSubmit} onSubmitCapture={inputSubmit}>
                 {/* <form onSubmit={searchSubmit} onSubmitCapture={() => searchField.length !== 0 ? setInput(input) : null}> */}
                     <label style={{width: "375px", height: "230px", display: "inline-block", position: "absolute", zIndex: "1"}}>
-                        <input className="generalLocation" onFocus={inputFocus} onBlur={() => searchField.length !== 0 ? null : setInput(input = false)} size={searchFieldSize()} type="search" name="location" placeholder={!input ? weather.name : searchField} onChange={searchChange} autoComplete="off" style={backgroundColorCheck(weather.weather[0].main)}/>
+                        <input className="generalLocation" onFocus={inputFocus} onBlur={inputBlur} size={searchFieldSize()} type="search" name="location" placeholder={!input ? weather.name : searchField} onChange={searchChange} autoComplete="off" style={backgroundColorCheck(weather.weather[0].main)}/>
                         {/* <input className="generalLocation" onFocus={() => {setInput(input = true); setWrapper(wrapper = true)}} onBlur={() => searchField.length !== 0 ? null : setInput(input = false)} size={searchFieldSize()} type="search" name="location" placeholder={!input ? weather.name : searchField} onChange={searchChange} autoComplete="off" style={backgroundColorCheck(weather.weather[0].main)}/> */}
                         <svg style={input ? {display: "none"} : null} className="generalMagGlass" width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="5" cy="5" r="4" stroke="white" strokeWidth="2"/>

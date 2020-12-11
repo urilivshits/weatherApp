@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Graph from "./Graph.js";
 import NextFourDays from "./NextFourDays.js";
 import "./MoreDetails.css";
@@ -12,11 +12,6 @@ const MoreDetails = ({weather, extra, wrapper, tempFormat, next4DaysWrapper, set
         else if (next4DaysWrapper) {
             return wrapper ? {transition: "top 300ms", top: "-120px"} : {transition: "top 300ms", top: "812px"};
         }
-    };
-
-    const scroll = (event) => {
-        console.log("heyNext", event.nativeEvent.wheelDelta);
-        event.nativeEvent.wheelDelta < 0 ? setNext4DaysWrapper(true) : setNext4DaysWrapper(false);
     };
 
     return (

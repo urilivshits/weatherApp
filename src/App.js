@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import General from "./General";
-import MoreDetails from "./MoreDetails";
 import {myApi} from "./myApi";
 import "./App.css";
 
@@ -79,30 +78,26 @@ class App extends Component {
     this.setState({searchfield: event.target.value});
   };
 
-  toggleDetails = () => {
-    this.state.moreDetailsShown ? this.setState({moreDetailsShown: false}) : this.setState({moreDetailsShown: true}) 
-  };
-
   render () {
     if (this.state.currentWeatherData.length === 0 || this.state.extraWeatherData.length === 0) {
       !this.state.locationFetched ? this.fetchLocation() : this.fetchWeather();
       return <p>Waiting for the data to fetch</p>
     }
     else {
-      console.log(this.state.currentWeatherData);
-      console.log(this.state.extraWeatherData);
-      console.log(this.state.searchfield);
+      // console.log(this.state.currentWeatherData);
+      // console.log(this.state.extraWeatherData);
+      // console.log(this.state.searchfield);
       console.log("page rendered");
       
       return (
         <div className="App">
-            <General weather={this.state.currentWeatherData} extra={this.state.extraWeatherData} searchChange={this.onSearchChange} searchSubmit={this.fetchNewLocation} searchField={this.state.searchfield} toggleDetails={this.toggleDetails}/>
-            {/* <button onClick={this.toggleDetails}>More details ></button> */}
-            {/* <MoreDetails weather={this.state.currentWeatherData} extra={this.state.extraWeatherData} /> */}
-            {/* {
-              this.state.moreDetailsShown && (
-              )
-            } */}
+            <General 
+            weather={this.state.currentWeatherData} 
+            extra={this.state.extraWeatherData} 
+            searchChange={this.onSearchChange} 
+            searchSubmit={this.fetchNewLocation} 
+            searchField={this.state.searchfield} 
+            />
        </div>
       )
     }

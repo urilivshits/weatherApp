@@ -2,6 +2,7 @@ import React, {useEffect, useRef} from "react";
 import "./IconBar.css";
 
 const IconBar = ({props, thisHour, graphWidth, blockWidth}) => {
+    
     const canvasRef = useRef(null);
     const imageRef1 = useRef(null);
     const imageRef2 = useRef(null);
@@ -20,14 +21,17 @@ const IconBar = ({props, thisHour, graphWidth, blockWidth}) => {
         const image5 = imageRef5.current;
         const image6 = imageRef6.current;
         
-        context.drawImage(image1, 0, 10)
-        context.drawImage(image2, blockWidth, 10)
-        context.drawImage(image3, blockWidth*2, 10)
-        context.drawImage(image4, blockWidth*3, 10)
-        context.drawImage(image5, blockWidth*4, 10)
-        context.drawImage(image6, blockWidth*5, 10)
-    });
-    // }, []); // <= ,[] this means only execute the render once? https://medium.com/@pdx.lucasm/canvas-with-react-js-32e133c05258
+        context.clearRect(0, 0, 375, 60);
+        context.drawImage(image1, 0, 10);
+        context.drawImage(image2, blockWidth, 10);
+        context.drawImage(image3, blockWidth*2, 10);
+        context.drawImage(image4, blockWidth*3, 10);
+        context.drawImage(image5, blockWidth*4, 10);
+        context.drawImage(image6, blockWidth*5, 10);
+        
+    }, [blockWidth, canvasRef, imageRef1, imageRef2, imageRef3, imageRef4, imageRef5, imageRef6]);
+    // }, []); <= ,[] this means only execute the render once? https://medium.com/@pdx.lucasm/canvas-with-react-js-32e133c05258
+    // }, []); <= ,[] it appers here goes dependency for useEffect post-rendering; will read more https://medium.com/better-programming/understanding-the-useeffect-dependency-array-2913da504c44 
 
     return (
         <div>

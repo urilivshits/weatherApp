@@ -2,7 +2,7 @@ import React from "react";
 
 const NextFourDays = ({dailyWeather, tempFormat}) => {
 
-    console.log(dailyWeather);
+    // console.log(dailyWeather);
 
     const getDayOfWeek = (unixTime) => {
         const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -37,16 +37,17 @@ const NextFourDays = ({dailyWeather, tempFormat}) => {
                     {
                         dailyWeather.map((value, i) => {
                             if (i > 4) {
-                                console.log("Next 4 days rendered");
+                                return null;
+                                // console.log("Next 4 days rendered");
                             }
                             else if (i > 0) {
                                 return (
                                     <tr key={i}>
-                                        <td style={{width: "60px"}}>{getDayOfWeek(value.dt)}</td>
-                                        <td style={{width: "120px", paddingLeft: "10px"}}>{value.weather[0].description}</td>
-                                        <td><img alt="icon" src={`http://openweathermap.org/img/w/${value.weather[0].icon}.png`}></img></td>
-                                        <td style={{color: "#0e59c9", paddingRight: "12px"}}>{rainChance(value)}</td>
-                                        <td style={{paddingRight: "12px"}}>{finalTemp(value.temp.day)}&#176;</td>
+                                        <td style={{width: "60px", paddingRight: "10px"}}>{getDayOfWeek(value.dt)}</td>
+                                        <td style={{width: "110px", paddingRight: "10px"}}>{value.weather[0].description}</td>
+                                        <td style={{paddingRight: "10px"}}><img alt="icon" src={`http://openweathermap.org/img/w/${value.weather[0].icon}.png`}></img></td>
+                                        <td style={{color: "#0e59c9", paddingRight: "10px"}}>{rainChance(value)}</td>
+                                        <td style={{paddingRight: "10px"}}>{finalTemp(value.temp.day)}&#176;</td>
                                         <td style={{color: "grey"}}>{finalTemp(value.temp.night)}&#176;</td>
                                     </tr>
                                 )

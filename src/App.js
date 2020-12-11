@@ -46,7 +46,7 @@ class App extends Component {
   };
   
   fetchWeather = () => {
-      fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${this.state.latitude}&lon=${this.state.longitude}&APPID=${myApi.key}`)
+      fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${this.state.latitude}&lon=${this.state.longitude}&APPID=${myApi.key}`)
       .then(response => response.json())
       .then(fetchedData => this.setState({currentWeatherData: fetchedData}));
       console.log("weather fetched");
@@ -60,7 +60,7 @@ class App extends Component {
   fetchNewLocation = (event) => {
     event.preventDefault();
 
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.searchfield}&APPID=${myApi.key}`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.searchfield}&APPID=${myApi.key}`)
     .then(response => response.ok ? response.json() : console.log("response not ok"))
     .then(fetchedData => fetchedData !== undefined ? this.setState({currentWeatherData: fetchedData, searchfield: ""}) : console.log("city not found"));
     console.log("weather fetched");

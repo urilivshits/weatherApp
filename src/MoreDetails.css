@@ -19,6 +19,10 @@
     z-index: 10;
 } */
 
+.detailsWrapperNoTouch {
+    pointer-events: none;
+
+}
 
 .detailsWindSpeedName {
     /* N */
@@ -258,6 +262,14 @@
     /* align-items: center;
     align-content: center; */
     text-align: center;
+    touch-action: none;
+    pointer-events: none;
+    user-select: none;
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
 }
 
 .detailsNext4DaysWrapper {
@@ -266,7 +278,7 @@
     top: 747px;
     width: 375px;
     height: 185px;
-    z-index: 5;
+    z-index: 6;
 }
 
 .detailsNext4DaysName {
@@ -331,8 +343,7 @@
     /* display: flex; */
     margin-left: auto;
     margin-right: auto;
-    
-    
+    pointer-events: none;
 }
 
 table {

@@ -29,19 +29,20 @@ const IconBar = ({props, thisHour, graphWidth, blockWidth}) => {
         context.drawImage(image5, blockWidth*4, 10);
         context.drawImage(image6, blockWidth*5, 10);
         
-    }, [blockWidth, canvasRef, imageRef1, imageRef2, imageRef3, imageRef4, imageRef5, imageRef6]);
+    },[blockWidth, canvasRef, imageRef1, imageRef2, imageRef3, imageRef4, imageRef5, imageRef6]);
+    // }, [blockWidth, canvasRef, imageRef1, imageRef2, imageRef3, imageRef4, imageRef5, imageRef6]);
     // }, []); <= ,[] this means only execute the render once? https://medium.com/@pdx.lucasm/canvas-with-react-js-32e133c05258
     // }, []); <= ,[] it appers here goes dependency for useEffect post-rendering; will read more https://medium.com/better-programming/understanding-the-useeffect-dependency-array-2913da504c44 
 
     return (
         <div>
             <canvas ref={canvasRef} width={graphWidth} height="45" {...props}/>
-            <img ref={imageRef1} className="hidden" width={"40px"} height={"40px"} alt={"icon"} src={`http://openweathermap.org/img/w/${thisHour[0].weather[0].icon}.png`}/>
-            <img ref={imageRef2} className="hidden" width={"40px"} height={"40px"} alt={"icon"} src={`http://openweathermap.org/img/w/${thisHour[3].weather[0].icon}.png`}/>
-            <img ref={imageRef3} className="hidden" width={"40px"} height={"40px"} alt={"icon"} src={`http://openweathermap.org/img/w/${thisHour[6].weather[0].icon}.png`}/>
-            <img ref={imageRef4} className="hidden" width={"40px"} height={"40px"} alt={"icon"} src={`http://openweathermap.org/img/w/${thisHour[9].weather[0].icon}.png`}/>
-            <img ref={imageRef5} className="hidden" width={"40px"} height={"40px"} alt={"icon"} src={`http://openweathermap.org/img/w/${thisHour[12].weather[0].icon}.png`}/>
-            <img ref={imageRef6} className="hidden" width={"40px"} height={"40px"} alt={"icon"} src={`http://openweathermap.org/img/w/${thisHour[15].weather[0].icon}.png`}/>
+            <img ref={imageRef1} className="hidden" width={"40px"} height={"40px"} alt={"icon"} src={`https://openweathermap.org/img/w/${thisHour[0].weather[0].icon}.png`}/>
+            <img ref={imageRef2} className="hidden" width={"40px"} height={"40px"} alt={"icon"} src={`https://openweathermap.org/img/w/${thisHour[3].weather[0].icon}.png`}/>
+            <img ref={imageRef3} className="hidden" width={"40px"} height={"40px"} alt={"icon"} src={`https://openweathermap.org/img/w/${thisHour[6].weather[0].icon}.png`}/>
+            <img ref={imageRef4} className="hidden" width={"40px"} height={"40px"} alt={"icon"} src={`https://openweathermap.org/img/w/${thisHour[9].weather[0].icon}.png`}/>
+            <img ref={imageRef5} className="hidden" width={"40px"} height={"40px"} alt={"icon"} src={`https://openweathermap.org/img/w/${thisHour[12].weather[0].icon}.png`}/>
+            <img ref={imageRef6} className="hidden" width={"40px"} height={"40px"} alt={"icon"} src={`https://openweathermap.org/img/w/${thisHour[15].weather[0].icon}.png`}/>
         </div>
     )
 }

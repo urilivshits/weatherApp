@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import General from "./General";
 import {myApi} from "./myApi";
-import "./App.css";
 
 class App extends Component {
   constructor (props) {

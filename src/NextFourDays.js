@@ -45,7 +45,7 @@ const NextFourDays = ({dailyWeather, tempFormat}) => {
                                     <tr key={i}>
                                         <td style={{width: "60px", paddingRight: "10px"}}>{getDayOfWeek(value.dt)}</td>
                                         <td style={{width: "110px", paddingRight: "10px"}}>{value.weather[0].description}</td>
-                                        <td style={{paddingRight: "10px"}}><img alt="icon" src={`http://openweathermap.org/img/w/${value.weather[0].icon}.png`}></img></td>
+                                        <td style={{paddingRight: "10px"}}><img alt="icon" src={`https://openweathermap.org/img/w/${value.weather[0].icon}.png`}></img></td>
                                         <td style={{color: "#0e59c9", paddingRight: "10px"}}>{rainChance(value)}</td>
                                         <td style={{paddingRight: "10px"}}>{finalTemp(value.temp.day)}&#176;</td>
                                         <td style={{color: "grey"}}>{finalTemp(value.temp.night)}&#176;</td>

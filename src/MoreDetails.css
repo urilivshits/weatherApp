@@ -270,6 +270,12 @@
     -khtml-user-select:none;
     -moz-user-select:none;
     -ms-user-select:none;
+    
+}
+
+.detailsGraphIcons {
+    margin: 0;
+    padding: 0;
 }
 
 .detailsNext4DaysWrapper {

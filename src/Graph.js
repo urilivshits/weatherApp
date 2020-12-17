@@ -56,7 +56,7 @@ const Graph = ({thisHour, tempFormat}) => {
                 <LineSeries stroke={"#FFFFFF"} strokeWidth={"2.5px"} data={temp}/>
                 <LabelSeries color={"#FFFFFF"} style={{fill: "#FFFFFF", fillWidth: "1px"}} data={temp} getLabel={zerosLabelFix}  labelAnchorX={"middle"} labelAnchorY={"middle"}/>
             </XYPlot>
-            <IconBar thisHour={thisHour} graphWidth={graphWidth} blockWidth={blockWidth}/>
+            <IconBar thisHour={thisHour}/>
             <div>
                 <svg fill={"#FFFFFF"} fontSize={"11px"} width={graphWidth} height={"20"} textAnchor={"bottom"} dominantBaseline={"middle"}>
                     <text x={10} y={10}>{thisHour[0].wind_speed}m/s</text>

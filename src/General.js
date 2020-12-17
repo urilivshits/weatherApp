@@ -40,14 +40,13 @@ const General = ({weather, extra, searchChange, searchSubmit, searchField}) => {
         return wrapper ? {transition: "top 300ms", top: "-54px"} : {transition: "top 300ms", top: "0px"};
     };
 
-    // console.log("heeeeey", getComputedStyle(document.querySelector(".generalLocation")).height);
+    // console.log(getComputedStyle(document.querySelector(".generalLocation")).height);
 
     const toggleWrapperClass = () => {
         setWrapper(!wrapper);
     };
     
     const scroll = (event) => {
-        // console.log("hey", event.nativeEvent.wheelDelta);
         if (wrapper) {
             event.nativeEvent.wheelDelta < 0 ? setNext4DaysWrapper(true) : setNext4DaysWrapper(false);
         }
@@ -70,6 +69,7 @@ const General = ({weather, extra, searchChange, searchSubmit, searchField}) => {
 
     const inputSubmit = () => {
         if (searchField.length !== 0) {
+            document.querySelector(".generalLocation").blur();
             setInput(input = false);
             // setWrapper(wrapper = true);
         }
@@ -77,7 +77,7 @@ const General = ({weather, extra, searchChange, searchSubmit, searchField}) => {
             return null;
         }
     };
-
+    
     const finalTemp = (temp) => {
         if (tempFormat) {
             let finalTemp = (temp - 273.15).toFixed();
@@ -102,7 +102,6 @@ const General = ({weather, extra, searchChange, searchSubmit, searchField}) => {
     //     touch < prevTouch ? setWrapper(true) : setWrapper(false);
     // }
     
-    // //------------------------------------ new
     const touchStartHandle = (event) => {
         setTouchStart(event.changedTouches[0].clientY);
     };
@@ -111,13 +110,13 @@ const General = ({weather, extra, searchChange, searchSubmit, searchField}) => {
         setTouchEnd(event.changedTouches[0].clientY);
 
         if (wrapper) {
-            touchStart - 10 > touchEnd ? setNext4DaysWrapper(true) : setNext4DaysWrapper(false);
+            touchStart - 5 > touchEnd ? setNext4DaysWrapper(true) : setNext4DaysWrapper(false);
         }
         if (next4DaysWrapper) {
-            touchStart - 10 > touchEnd ? setNext4DaysWrapper(true) : setNext4DaysWrapper(false);
+            touchStart - 5 > touchEnd ? setNext4DaysWrapper(true) : setNext4DaysWrapper(false);
         } 
         else {
-            touchStart - 10 > touchEnd ? setWrapper(true) : setWrapper(false);
+            touchStart - 5 > touchEnd ? setWrapper(true) : setWrapper(false);
         }
     };
 

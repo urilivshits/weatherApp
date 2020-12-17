@@ -52,6 +52,7 @@ const NextFourDays = ({dailyWeather, tempFormat}) => {
                                     </tr>
                                 )
                             }
+                            return null;
                         })
                     }
                 </tbody>

@@ -5,14 +5,32 @@ import "./MoreDetails.css";
 
 const MoreDetails = ({weather, extra, wrapper, tempFormat, next4DaysWrapper, setNext4DaysWrapper}) => {
     
+    // const transitionCheck = () => {
+    //     if (!next4DaysWrapper) {
+    //         // return wrapper ? {transition: "top 300ms", top: "0px"} : {transition: "top 300ms", top: "812px"};
+    //         return wrapper ? {transition: "top 300ms", top: "-120px"} : {transition: "top 300ms", top: "812px"};
+
+    //     }
+    //     else if (next4DaysWrapper) {
+    //         return wrapper ? {transition: "top 300ms", top: "-120px"} : {transition: "top 300ms", top: "812px"};
+    //     }
+    // };
     const transitionCheck = () => {
-        if (!next4DaysWrapper) {
-            return wrapper ? {transition: "top 300ms", top: "0px"} : {transition: "top 300ms", top: "812px"};
-        }
-        else if (next4DaysWrapper) {
-            return wrapper ? {transition: "top 300ms", top: "-120px"} : {transition: "top 300ms", top: "812px"};
-        }
+        return wrapper ? {transition: "top 300ms", top: "-120px"} : {transition: "top 300ms", top: "812px"};
+
     };
+
+    const showNextHours = () => {
+       return !next4DaysWrapper ? 
+       {transition: "all 300ms", transform: "translateY(0px)"} : 
+       {transition: "all 300ms", transform: "translateY(200px)"}
+    };
+
+    const showNextDays = () => {
+        return !next4DaysWrapper ? 
+        {transition: "all 300ms", transform: "translateY(200px)"} :
+        {transition: "all 300ms", transform: "translateY(0px)"}
+    }
 
     return (
         <div className="detailsWrapper" style={transitionCheck()}>
@@ -74,18 +92,21 @@ const MoreDetails = ({weather, extra, wrapper, tempFormat, next4DaysWrapper, set
                             <path d="M15 6C12.8333 7 8.23509 9.73509 9.5 11C11 12.5 13.5 8.33333 15 6Z" fill="white"/>
                         </svg>
                     </div>
-                    <p className="details24Name">24 - hours forecast</p>
-                    <div className="detailsGraph">
-                        <Graph thisHour={extra.hourly} tempFormat={tempFormat}/>
+                        <p className="details24Name" onClick ={() => setNext4DaysWrapper(!next4DaysWrapper)}>{!next4DaysWrapper ? "Next 24 hours" : "Next 4 days"}</p>
+                        <svg style={next4DaysWrapper ? {transform: "rotate(90deg)", left: "130px"} : {transform: "rotate(0deg)", left: "140px"}} className="detailsBtnSVG" width="4" height="7" viewBox="0 0 4 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            {/* changed stroke-linecap, stroke-linejoin, stroke-width to camelCase below */}
+                            <path d="M0.5 0.5L3.5 3.5L0.5 6.5" stroke="white" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                    <div className="detailsNextHoursDaysParent">
+                        <div className="detailsGraphWrapper" style={showNextHours()}>
+                            <div className="detailsGraph">
+                                <Graph thisHour={extra.hourly} tempFormat={tempFormat}/>
+                            </div>
+                        </div>
+                        <div className="detailsNext4DaysWrapper" style={showNextDays()}>
+                            <NextFourDays dailyWeather={extra.daily} tempFormat={tempFormat}/>
+                        </div>
                     </div>
-                </div>
-                <div className="detailsNext4DaysWrapper" onClick={() => setNext4DaysWrapper(!next4DaysWrapper)}>
-                    <p className="detailsNext4DaysName">Next 4 days</p>
-                    <svg style={next4DaysWrapper ? {transform: "rotate(90deg)"} : {transform: "rotate(0deg)"}} className="detailsBtnSVG" width="4" height="7" viewBox="0 0 4 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        {/* changed stroke-linecap, stroke-linejoin, stroke-width to camelCase below */}
-                        <path d="M0.5 0.5L3.5 3.5L0.5 6.5" stroke="white" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                    <NextFourDays dailyWeather={extra.daily} tempFormat={tempFormat}/>
                 </div>
         </div>
     )

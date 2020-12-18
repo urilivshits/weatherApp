@@ -103,10 +103,18 @@ const General = ({weather, extra, searchChange, searchSubmit, searchField}) => {
     // }
     
     const touchStartHandle = (event) => {
+    // console.log(event.target.className);
+    //     if (event.target.className === "details24Name") {
+    //         console.log("thissss");
+    //         return;
+    //     }
         setTouchStart(event.changedTouches[0].clientY);
     };
 
     const touchEndHandle = (event) => {
+        if (event.target.className === "details24Name") {
+            return;
+        }
         setTouchEnd(event.changedTouches[0].clientY);
 
         if (wrapper) {
@@ -119,6 +127,7 @@ const General = ({weather, extra, searchChange, searchSubmit, searchField}) => {
             touchStart - 5 > touchEnd ? setWrapper(true) : setWrapper(false);
         }
     };
+
 
     return (
         <div className="html" style={backgroundColorCheck(weather.weather[0].main)}>

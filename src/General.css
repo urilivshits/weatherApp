@@ -340,14 +340,16 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     width: 217.62px;
     height: 315.65px;
     left: 105.79px;
-    top: 308px;
+    /* top: 308px; */
+    top: 208px;
     z-index: 2;
     pointer-events: none;
 }
 
 .generalSunInner {
     left: 0px;
-    top: 326px;
+    /* top: 326px; */
+    top: 226px;
     position: absolute;
     z-index: 0;
     pointer-events: none;
@@ -355,7 +357,8 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 
 .generalSunOuter {
     left: 0px;
-    top: 326px;
+    /* top: 326px; */
+    top: 226px;
     position: absolute;
     z-index: 1;
     pointer-events: none;
@@ -368,7 +371,24 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     width: 413.16px;
     height: 272.84px;
     left: -74px;
-    top: 521.41px;
+    /* top: 521.41px; */
+    top: 421.41px;
     z-index: 0;
     pointer-events: none;
 }
+
+@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
+    html {
+      /* Rotate the content container */
+      transform: rotate(-90deg);
+      transform-origin: left top;
+      /* Set content width to viewport height */
+      width: 100vh;
+      /* Set content height to viewport width */
+      height: 100vw;
+      overflow-x: hidden;
+      position: absolute;
+      top: 100%;
+      left: 0;
+    }
+  }

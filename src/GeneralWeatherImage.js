@@ -3,12 +3,14 @@ import React from "react";
 const GeneralWeatherImage = ({weatherType, wrapper}) => {
     
     const transitionCheckSun = (time) => {
-        return wrapper ? {transition: `all ${time}`, top: "812px", opacity: "0", transform: "rotate(35deg)"} : {transition: `all ${time}`, top: "326px", opacity: "1",  transform: "rotate(0deg)"};
+        // return wrapper ? {transition: `all ${time}`, top: "812px", opacity: "0", transform: "rotate(35deg)"} : {transition: `all ${time}`, top: "326px", opacity: "1",  transform: "rotate(0deg)"};
+        return wrapper ? {transition: `all ${time}`, top: "812px", opacity: "0", transform: "rotate(35deg)"} : {transition: `all ${time}`, top: "226px", opacity: "1",  transform: "rotate(0deg)"};
         // return wrapper ? {transition: `all ${time}`, opacity: "0", transform: "rotate(90deg)"} : null;
     };
 
     const transitionCheckCloud = (time) => {
-        return wrapper ? {transition: `all ${time}`, top: "812px", opacity: "0", transform: "rotate(35deg)"} : {transition: `all ${time}`, top: "521.41px", opacity: "1", transform: "rotate(0deg)"};
+        // return wrapper ? {transition: `all ${time}`, top: "812px", opacity: "0", transform: "rotate(35deg)"} : {transition: `all ${time}`, top: "521.41px", opacity: "1", transform: "rotate(0deg)"};
+        return wrapper ? {transition: `all ${time}`, top: "812px", opacity: "0", transform: "rotate(35deg)"} : {transition: `all ${time}`, top: "421.41px", opacity: "1", transform: "rotate(0deg)"};
     };
 
     if (weatherType === "Clear" || weatherType === "Clouds") {

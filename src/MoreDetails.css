@@ -1,7 +1,7 @@
 .detailsWrapper {
     position: absolute;
     top: 812;
-    left: 100;
+    /* left: 100; */
     width: 375px;
     height: 932px;
     z-index: 3;
@@ -19,10 +19,10 @@
     z-index: 10;
 } */
 
-.detailsWrapperNoTouch {
+/* .detailsWrapperNoTouch {
     pointer-events: none;
 
-}
+} */
 
 .detailsWindSpeedName {
     /* N */
@@ -234,10 +234,23 @@
     z-index: 3;
 }
 
+/* .detailsGraphWrapper {
+    position: absolute;
+    top: -50px;
+} */
+
+/* .detailsGraphWrapper {
+    position: absolute;
+    background: red;
+    width: 375px;
+    height: 100px;
+} */
+
 .details24Name {
     /* 24 - HOURS FORECAST */
 
     position: absolute;
+    /* position: relative; */
     width: 148px;
     height: 18px;
     left: 29px;
@@ -251,7 +264,30 @@
     /* text-transform: lowercase; */
 
     color: #FFFFFF;
-    z-index: 3;
+    z-index: 7;
+}
+
+.detailsBtnSVG {
+    /* Vector 24 */
+
+   /* position: relative; */
+   position: absolute;
+   width: 5px;
+   height: 10px;
+   left: 140px;
+   /* top: 216.45px; */
+   /* top: 762px; */
+   top: 533px;
+
+   transition: transform 500ms;
+}
+
+.detailsNextHoursDaysParent {
+    position: absolute;
+    width: 375px;
+    height: 745px;
+    top: 0px;
+    overflow: hidden;
 }
 
 .detailsGraph {
@@ -278,26 +314,32 @@
     padding: 0;
 }
 
-.detailsNext4DaysWrapper {
+/* .detailsNext4DaysWrapper {
     position: absolute;
     left: 0;
     top: 747px;
     width: 375px;
     height: 185px;
     z-index: 6;
+} */
+
+.detailsNext4DaysWrapper {
+    position: absolute;
+    left: 0;
+    top: 511px;
+    width: 375px;
+    height: 185px;
+    /* z-index: 6; */
+    z-index: 3;
 }
 
-.detailsNext4DaysName {
-    /* Next day */
+/* Next day */
+/* .detailsNext4DaysName {
 
     position: absolute;
-    /* width: 68px; */
-    /* width: 148px; */
     width: 100%;
     height: 18px;
     left: 29px;
-    /* top: 767px; */
-    /* top: 747px; */
 
     font-family: Roboto;
     font-style: normal;
@@ -307,21 +349,7 @@
 
     color: #FFFFFF;
     z-index: 3;
-}
-
-.detailsBtnSVG {
-     /* Vector 24 */
-
-    position: relative;
-    width: 5px;
-    height: 10px;
-    left: 120px;
-    /* top: 216.45px; */
-    /* top: 762px; */
-    top: 14px;
-
-    transition: transform 500ms;
-}
+} */
 
 .detailsNext4DaysData {
     /* next 4 days */
